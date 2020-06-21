@@ -3,7 +3,7 @@ using ChapterOne.Droid.Effects;
 using ChapterOne.Effects;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-
+using System.Linq;
 [assembly: ResolutionGroupName("com.ChapterOne")]
 [assembly: ExportEffect(typeof(BackgroundColorAndroidEffect), nameof(EntryBackgroundColorEffect))]
 namespace ChapterOne.Droid.Effects
@@ -19,7 +19,19 @@ namespace ChapterOne.Droid.Effects
         {
             try
             {
-                Control.SetBackgroundColor(Android.Graphics.Color.Red);
+                // Implementation using static color change
+                //Control.SetBackgroundColor(Android.Graphics.Color.Red);
+
+                var effect = (EntryBackgroundColorEffect)Element.Effects.
+                    FirstOrDefault(e => e is EntryBackgroundColorEffect);
+
+                // Implementation using dynamic color change
+                if (Control != null)
+                {
+                    Control.SetBackgroundColor(effect.BackgroundColor.ToAndroid());
+                }
+
+
             }
             catch (Exception ex)
             {

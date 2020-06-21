@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using ChapterOne.Effects;
 using ChapterOne.iOS.Effects;
 using UIKit;
@@ -19,7 +20,17 @@ namespace ChapterOne.iOS.Effects
         {
             try
             {
-                Control.BackgroundColor = UIColor.FromRGB(42, 42, 42);
+                // Implementation using static color change
+                // Control.BackgroundColor = UIColor.FromRGB(42, 42, 42);
+
+                // Implementation using dynamic color change
+                var effect = (EntryBackgroundColorEffect)Element.Effects.
+                    FirstOrDefault(e => e is EntryBackgroundColorEffect);
+
+                if (effect != null)
+                {
+                    Control.BackgroundColor = effect.BackgroundColor.ToUIColor();
+                }
             }
             catch (Exception ex)
             {
