@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ChapterOne.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:customControls="clr-namespace:ChapterOne.CustomControls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:effects="clr-namespace:ChapterOne.Effects"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackLayout Spacing="25" VerticalOptions="Center">
+
+        <Frame>
+            <StackLayout>
+                <Label
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                    Text="Custom Render"
+                    VerticalOptions="Center" />
+                <customControls:MyEntry Text="I am Entry using custom render" />
+            </StackLayout>
+        </Frame>
+
+        <Frame>
+            <StackLayout>
+                <Label
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                    Text="Implement Effect"
+                    VerticalOptions="Center" />
+                <Entry Text=" Ricardo Brito Brens applying effect over xamarin forms" VerticalOptions="CenterAndExpand">
+                    <Entry.Effects>
+                        <effects:EntryBackgroundColorEffect BackgroundColor="Red" />
+                    </Entry.Effects>
+                </Entry>
+            </StackLayout>
+        </Frame>
+
+    </StackLayout>
+</ContentPage>
